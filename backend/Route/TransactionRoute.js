@@ -1,0 +1,10 @@
+import express from 'express';
+import { transaction } from '../Controllers/TransactionController.js';
+import { Protected } from '../Middleware/AuthMiddleWare.js';
+const TransactionRutes = express.Router();
+TransactionRutes.get('/get', Protected, transaction.getAll);
+TransactionRutes.post('/create', Protected, transaction.create);
+TransactionRutes.put('/update/:id', Protected, transaction.updates);
+TransactionRutes.delete('/delete/:id', Protected, transaction.deletes);
+TransactionRutes.get('/cal', Protected,transaction.IncomeAndExpense);
+export default TransactionRutes;
